@@ -5,7 +5,7 @@
         cigar: "./img/hats/cigar.webp",
         obama: "./img/hats/obama.webp",
         witch: "./img/hats/witch.webp",
-        eyrbrows: "./img/hats/eyebrows.webp",
+        eyebrows: "./img/hats/eyebrows.webp",
         bucket: "./img/hats/bucket.webp",
         tophat: "./img/hats/tophat.webp"
     };
