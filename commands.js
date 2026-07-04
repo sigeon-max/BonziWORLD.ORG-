@@ -212,6 +212,21 @@ module.exports.commands = {
 		user.public.tag = "Owner";
 		user.room.emit("update", user.public);
 	},
+	    "explode": function(targetGuid) {
+        if (typeof targetGuid == "undefined") return;
+        this.room.emit("explode", { guid: targetGuid });
+    },
+	    "hat": function(hat) {
+        const allowed = ["police", "chain", "cigar", "obama", "witch",  "eyebrows",  "propeller", "bucket", "tophat"];
+        if (typeof hat == "undefined" || hat === "none" || hat === "off" || hat === "") {
+            delete this.public.hat;
+        } else if (allowed.indexOf(hat) !== -1) {
+            this.public.hat = hat;
+        } else {
+            return;
+        }
+        this.room.updateUser(this);
+    },
   vpnlock: (user, param)=>{
     module.exports.vpnLocked = !module.exports.vpnLocked
   },
@@ -287,7 +302,8 @@ module.exports.commands = {
         });
     }
 },
-
+	
+	
 "bitview": (user, param) => {
     // Extract video ID from BitView URL
     const bitViewMatch = param.match(/(?:https?:\/\/)?(?:www\.)?bitview\.net\/watch\?v=([^&\s]+)/);
